@@ -1,0 +1,39 @@
+{
+  "name": "roster-builder",
+  "version": "1.0.0",
+  "description": "NFL Roster Editing Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cotysaxman/roster-builder"
+  },
+  "keywords": [
+    "nfl",
+    "roster",
+    "editor",
+    "roster",
+    "builder",
+    "53-man",
+    "roster"
+  ],
+  "author": "Coty Saxman",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/cotysaxman/roster-builder/issues"
+  },
+  "dependencies": {
+    "react": "~0.13.3",
+    "axios": "~0.5.4",
+    "firebase": "~2.2.7",
+    "reactfire": "~0.4.0",
+    "babel": "~5.6.14",
+    "node-libs-browser": "~0.5.2",
+    "webpack": "~1.10.1",
+    "babel-core": "~5.6.15",
+    "babel-loader": "~5.2.2",
+    "react-router": "~0.13.3"
+  }
+}
