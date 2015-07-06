@@ -5,6 +5,7 @@ var React = require('react');
 var Main = require('../components/Main');
 var Home = require('../components/Home');
 var DepthChart = require('../components/DepthChart');
+var Roster = require('../components/Roster');
 var Router = require('react-router');
 var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
@@ -12,6 +13,7 @@ var Route = Router.Route;
 module.exports = (
     <Route name="app" path="/" handler={Main}>
         <Route name="depth-chart" path="/depth-chart/" handler={DepthChart}></Route>
+        <Route name="roster" path="/roster/" handler={Roster}></Route>
         <DefaultRoute handler={Home} />
     </Route>
 )
