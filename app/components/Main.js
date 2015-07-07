@@ -3,6 +3,7 @@
  */
 var React = require('react');
 var RouteHandler = require('react-router').RouteHandler;
+var DataLink = require('./DataLink');
 
 var Main = React.createClass({
     render: function(){
@@ -16,6 +17,7 @@ var Main = React.createClass({
                 <div className="container">
                     <RouteHandler />
                 </div>
+                <DataLink />
             </div>
         )
     }
