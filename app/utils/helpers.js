@@ -22,7 +22,7 @@ var helpers = {
     depthChart: function(team){
         return getDepthChart(team);
     },
-    player(id){
+    player: function(id){
         return getPlayer(id);
     }
 };
