@@ -15,10 +15,10 @@ var TeamSelect = React.createClass({
         var roster = (window.ROSTER_BUILDER_DATA[team].roster);
         for(var i = 0; i < roster.length; i++){
             var id = roster[i];
-            //if(!window.ROSTER_BUILDER_DATA.players[id]){
+            if(!window.ROSTER_BUILDER_DATA.players[id]){
                 helpers.player(id);
                 console.log("downloading player: " + id);
-            //}
+            }
         }
 
         this.transitionTo('office', {team: window.ROSTER_BUILDER_DATA.team});

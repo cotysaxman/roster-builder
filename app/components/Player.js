@@ -7,25 +7,37 @@ var Player = React.createClass({
     propTypes: {
         player: React.PropTypes.object.isRequired
     },
-    showPopup: function(){
-        var p = this.props.player;
-        document.getElementById(p['Name'] + "pubg").style.display = "block";
-        document.getElementById(p['Name'] + "pufg").style.display = "block";
+    getInitialState: function(){
+        return {
+            windowOpen: false
+        }
     },
-    clickHandler: function(){
-        this.showPopup();
+    showPopup: function(){
+        this.setState({
+            windowOpen: true
+        })
+    },
+    closePopup: function(){
+        this.setState({
+            windowOpen: false
+        })
     },
     render: function(){
         var p = this.props.player;
+        var classes = this.state.windowOpen ? "" : "hide";
         return (
-            <div onClick={this.clickHandler}>
+            <div onClick={this.showPopup}>
                 {p.Name}<br />
                 {p.Position} #{p.Number}<br />
                 {p.Height}, {p.Weight}<br />
                 ${p['Current Salary']}<br />
                 {p['Spotrac URL']}
-                <div id={p['Name'] + "pubg"} className="popup_background" style={{display: "none"}}></div>
-                <div id={p['Name'] + "pufg"} className="popup_player_window" style={{display: "none"}}></div>
+                <div id={p['Name'] + "hide_div"} className={classes}>
+                    <div className="popup_background" onClick={this.closePopup}>
+                        <div className="popup_player_window">
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

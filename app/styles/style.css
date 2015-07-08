@@ -2,7 +2,6 @@
  * Created by Coty-Saxman on 7/7/2015.
  */
 .popup_background{
-    display: none;
     position: fixed;
     top: 0%;
     left: 0%;
@@ -15,7 +14,6 @@
     filter: alpha(opacity=80);
 }
 .popup_player_window {
-    display: none;
     position: fixed;
     top: 25%;
     left: 25%;
@@ -26,4 +24,11 @@
     background-color: white;
     z-index:1002;
     overflow: auto;
+    -moz-opacity: 1;
+    opacity:1;
+    filter: alpha(opacity=100);
+}
+
+.hide {
+    display: none;
 }

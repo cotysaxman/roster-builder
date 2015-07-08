@@ -18,7 +18,7 @@ var RosterPositionGroup = React.createClass({
             }
         }
         var list = posPlayers.map(function(player, index){
-            return <li className="list-group-item"><Player key={index} player={player} /></li>
+            return <li className="list-group-item" key={index}><Player player={player} /></li>
         });
         return (
             <ul className="list-group">
