@@ -13,9 +13,9 @@ var Route = Router.Route;
 
 module.exports = (
     <Route name="app" path="/" handler={Main}>
-        <Route name="depth-chart" path="/depth-chart/:team" handler={DepthChart}></Route>
-        <Route name="roster" path="/roster/:team" handler={Roster}></Route>
-        <Route name="office" path="/office/:team" handler={Office}></Route>
+        <Route name="depth-chart" path="/depth-chart/" handler={DepthChart}></Route>
+        <Route name="roster" path="/roster/" handler={Roster}></Route>
+        <Route name="office" path="/office/" handler={Office}></Route>
         <DefaultRoute handler={Home} />
     </Route>
 );

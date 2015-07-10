@@ -7,6 +7,26 @@ var Player = React.createClass({
     propTypes: {
         player: React.PropTypes.object.isRequired
     },
+    eightFractionChar(num){
+        switch(num){
+            case('1'):
+                return "\u215B";
+            case('2'):
+                return "\u00BC";
+            case('3'):
+                return "\u215C";
+            case('4'):
+                return "\u00BD";
+            case('5'):
+                return "\u215D";
+            case('6'):
+                return "\u00BE";
+            case('7'):
+                return "\u215E";
+            default:
+                return "";
+        }
+    },
     popupDiv: function(){
         var p = this.props.player;
         var headerStyle = {
@@ -31,6 +51,7 @@ var Player = React.createClass({
             top: "90%",
             width: "100%",
             height: "10%",
+            textAlign: "center",
             backgroundColor: "#FF0000"
         };
         var imgBoxStyle = {
@@ -221,14 +242,14 @@ var Player = React.createClass({
                         <div style={imgBoxStyle}></div>
                         <div style={infoBoxStyle}>
                             <div style={numBox}>#{p['Number']}</div><div style={nameBox}>{p['Name'].toUpperCase()}</div><div style={posBox}>{p['Position']}</div>
-                            <div style={htBox}>{p['Height'].charAt(0)}'{parseInt("" + p['Height'].charAt(1) + p['Height'].charAt(2), 10)}"</div><div style={wtBox}>{p['Weight']}lbs</div><div style={ageBox}>{p['Age']}yrs</div>
+                            <div style={htBox}>{p['Height'].charAt(0)}'{parseInt("" + p['Height'].charAt(1) + p['Height'].charAt(2), 10) + this.eightFractionChar(p['Height'].charAt(3))}"</div><div style={wtBox}>{p['Weight']}lbs</div><div style={ageBox}>{p['Age']}yrs</div>
                         </div>
                         <div style={curSalLabelBox}>Current Salary Cap Number</div><div style={curSalBox}>${p['Current Salary']}</div>
                         <div style={curDMLabelBox}>Current Year Penalty if Cut</div><div style={curDMBox}>${p['June 1st Dead Money']}</div>
                         <div style={futDMLabelBox}>Carryover Cap Penalty if Cut</div><div style={futDMBox}>${p['Future Dead Money']}</div>
                         <div style={totDMLabelBox}>Total Cap Penalty if Cut</div><div style={totDMBox}>${p['Total Dead Money']}</div>
                     </div>
-                    <div style={footerStyle}></div>
+                    <div style={footerStyle} onClick={()=>window.ROSTER_BUILDER_DATA.cutPlayer(this.props.player['key'])}>CLICK TO CUT</div>
                 </div>
             </div>
         )
@@ -238,6 +259,10 @@ var Player = React.createClass({
         window.ROSTER_BUILDER_DATA.eraseElement = function(name){
             document.getElementById(name + "hide_div").innerHTML = "";
             console.log("erased");
+        };
+        window.ROSTER_BUILDER_DATA.cutPlayer = function(id){
+            console.log("CUT player " + id);
+            window.ROSTER_BUILDER_DATA['teams'][window.ROSTER_BUILDER_DATA.team].roster.splice(window.ROSTER_BUILDER_DATA['teams'][window.ROSTER_BUILDER_DATA.team].roster.indexOf(id), 1);
         };
         var element = document.getElementById(p['Name'] + "hide_div");
         if(!element){

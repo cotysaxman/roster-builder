@@ -13,6 +13,7 @@ var TeamSelect = React.createClass({
 
         //DOWNLOAD CODE//
         var roster = (window.ROSTER_BUILDER_DATA['teams'][team].roster);
+        console.log(roster);
         for(var i = 0; i < roster.length; i++){
             var id = roster[i];
             if(!window.ROSTER_BUILDER_DATA.players[id]){

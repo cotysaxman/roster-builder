@@ -7,10 +7,10 @@ var Router = require('react-router');
 var Navigation = React.createClass({
     mixins: [Router.Navigation],
     gotoRoster: function(){
-        this.transitionTo('roster', {team: window.ROSTER_BUILDER_DATA.team});
+        this.transitionTo('roster');
     },
     gotoDepthChart: function(){
-        this.transitionTo('depth-chart', {team: window.ROSTER_BUILDER_DATA.team});
+        this.transitionTo('depth-chart');
     },
     render: function(){
         return (

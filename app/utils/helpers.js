@@ -3,16 +3,19 @@
  */
 var axios = require('axios');
 
+//var serverRoot = 'http://roster-builder.comoj.com/';
+var serverRoot = 'http://nflrosterbuilder.byethost7.com/';
+
 function getDepthChart(team){
-    return axios.get('http://roster-builder.comoj.com/get-depthchart.php?team=' + team);
+    return axios.get(serverRoot + 'get-depthchart.php?team=' + team);
 }
 
 function getRoster(team){
-    return axios.get('http://roster-builder.comoj.com/get-roster.php?team=' + team);
+    return axios.get(serverRoot + 'get-roster.php?team=' + team);
 }
 
 function getPlayer(id){
-    return axios.get('http://roster-builder.comoj.com/get-player.php?id=' + id);
+    return axios.get(serverRoot + 'get-player.php?id=' + id);
 }
 
 var helpers = {
