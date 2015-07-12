@@ -16,7 +16,7 @@ var TeamSelect = React.createClass({
         console.log(roster);
         for(var i = 0; i < roster.length; i++){
             var id = roster[i];
-            if(!window.ROSTER_BUILDER_DATA.players[id]){
+            if(!window.ROSTER_BUILDER_DATA.players[id] || !window.ROSTER_BUILDER_DATA.players[id]['Current Salary']){
                 helpers.player(id);
                 console.log("downloading player: " + id);
             }
