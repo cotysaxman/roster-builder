@@ -6,35 +6,88 @@ var RosterPositionGroup = require('./RosterPositionGroup');
 
 var Roster = React.createClass({
     render: function(){
-
         return (
             <table>
                 <tr><th>Offense</th></tr>
                 <tr>
-                    <td><RosterPositionGroup group={"QB"} /></td>
-                    <td><RosterPositionGroup group={"RB"} /></td>
-                    <td><RosterPositionGroup group={"FB"} /></td>
-                    <td><RosterPositionGroup group={"WR"} /></td>
-                    <td><RosterPositionGroup group={"TE"} /></td>
-                    <td><RosterPositionGroup group={"OT"} /></td>
-                    <td><RosterPositionGroup group={"OG"} /></td>
-                    <td><RosterPositionGroup group={"OC"} /></td>
+                    <td><RosterPositionGroup group={"QB"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"RB"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"FB"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"WR"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"TE"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"OT"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"OG"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"OC"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
                 </tr>
                 <tr><th>Defense</th></tr>
                 <tr>
-                    <td><RosterPositionGroup group={"DT"} /></td>
-                    <td><RosterPositionGroup group={"DE"} /></td>
-                    <td><RosterPositionGroup group={"ILB"} /></td>
-                    <td><RosterPositionGroup group={"OLB"} /></td>
-                    <td><RosterPositionGroup group={"CB"} /></td>
-                    <td><RosterPositionGroup group={"FS"} /></td>
-                    <td><RosterPositionGroup group={"SS"} /></td>
+                    <td><RosterPositionGroup group={"DT"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"DE"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"ILB"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"OLB"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"CB"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"FS"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"SS"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
                 </tr>
                 <tr><th>Special Teams</th></tr>
                 <tr>
-                    <td><RosterPositionGroup group={"LS"} /></td>
-                    <td><RosterPositionGroup group={"P"} /></td>
-                    <td><RosterPositionGroup group={"PK"} /></td>
+                    <td><RosterPositionGroup group={"LS"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"P"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
+                    <td><RosterPositionGroup group={"PK"}
+                                             team={this.props.team}
+                                             roster={this.props.roster}
+                                             rosterUpdate={this.props.rosterUpdate} /></td>
                 </tr>
             </table>
         )

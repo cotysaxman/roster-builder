@@ -6,11 +6,14 @@ var Player = require('./Player');
 
 var RosterPositionGroup = React.createClass({
     propTypes: {
-        group: React.PropTypes.string.isRequired
+        group: React.PropTypes.string.isRequired,
+        team: React.PropTypes.string.isRequired,
+        roster: React.PropTypes.array.isRequired,
+        rosterUpdate: React.PropTypes.func.isRequired
     },
     render: function(){
         var posPlayers = [];
-        var fullRoster = window.ROSTER_BUILDER_DATA['teams'][window.ROSTER_BUILDER_DATA.team].roster;
+        var fullRoster = this.props.roster;
         for(var i = 0; i < fullRoster.length; i++){
             var player = window.ROSTER_BUILDER_DATA.players[fullRoster[i]];
             if(player['Position'] == this.props.group){
