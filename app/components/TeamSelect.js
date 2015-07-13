@@ -7,17 +7,20 @@ var helpers = require('../utils/helpers');
 
 var TeamSelect = React.createClass({
     mixins: [Router.Navigation],
+    propTypes: {
+        data: React.PropTypes.object.isRequired
+    },
     handleSubmit: function(){
         var username = this.refs.username.getDOMNode().value;
         var team = this.refs.teamSelect.getDOMNode().value;
-        window.ROSTER_BUILDER_DATA.team = team;
+        this.props.data['team'] = team;
 
         //DOWNLOAD CODE//
-        var roster = (window.ROSTER_BUILDER_DATA['teams'][team].roster);
+        var roster = (this.props.data['teams'][team].roster);
         console.log(roster);
         for(var i = 0; i < roster.length; i++){
             var id = roster[i];
-            if(!window.ROSTER_BUILDER_DATA.players[id] || !window.ROSTER_BUILDER_DATA.players[id]['Current Salary']){
+            if(!this.props.data.players[id] || !this.props.data.players[id]['Current Salary']){
                 helpers.player(id);
                 console.log("downloading player: " + id);
             }

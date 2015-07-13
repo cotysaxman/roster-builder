@@ -6,20 +6,38 @@ var RouteHandler = require('react-router').RouteHandler;
 var DataLink = require('./DataLink');
 
 var Main = React.createClass({
+    getInitialState: function(){
+        return {
+            data: null
+        }
+    },
+    setData: function(data){
+        this.setState({
+            data: data
+        });
+        console.log("Data Initialized!");
+        console.log(this.state.data);
+    },
     render: function(){
-        return (
-            <div className="main-container">
-                <nav className="navbar navbar-default" role="navigation">
-                    <div className="col-sm-7 col-sm-offset-2" style={{marginTop: 15}}>
-                        HEADER
+        var handler = (<RouteHandler data={this.state.data} />);
+        return this.state.data?
+            (
+                <div className="main-container">
+                    <nav className="navbar navbar-default" role="navigation">
+                        <div className="col-sm-7 col-sm-offset-2" style={{marginTop: 15}}>
+                            HEADER
+                        </div>
+                    </nav>
+                    <div className="container">
+                        {handler}
                     </div>
-                </nav>
-                <div className="container">
-                    <RouteHandler />
-                    <DataLink />
                 </div>
-            </div>
-        )
+            ) : (
+                <div>
+                    loading...
+                    <DataLink setData={this.setData} />
+                </div>
+            );
     }
 });
 

@@ -5,6 +5,7 @@ var React = require('react');
 
 var Navigation = React.createClass({
     propTypes: {
+        data: React.PropTypes.object.isRequired,
         gotoRoster: React.PropTypes.func.isRequired,
         gotoDepthChart: React.PropTypes.func.isRequired
     },

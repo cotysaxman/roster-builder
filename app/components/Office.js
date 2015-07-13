@@ -11,6 +11,9 @@ var Firebase = require('firebase');
 
 var Office = React.createClass({
     mixins: [Router.State, ReactFireMixin],
+    propTypes: {
+        data: React.PropTypes.object.isRequired
+    },
     getInitialState: function(){
         return {
             user: this.getParams().username,
@@ -26,8 +29,8 @@ var Office = React.createClass({
         this.depthChartRef = childRef.child('depth-chart');
         this.bindAsArray(this.rosterRef, 'roster');
         this.bindAsArray(this.depthChartRef, 'depthChart');
-        if(this.state.roster.length == 0) this.handleRosterUpdate(window.ROSTER_BUILDER_DATA['teams'][this.getParams().team]['roster']);
-        if(this.state.depthChart.length == 0) this.handleDepthChartUpdate(window.ROSTER_BUILDER_DATA['teams'][this.getParams().team]['depth-chart']);
+        if(this.state.roster.length == 0) this.handleRosterUpdate(this.props.data['teams'][this.getParams().team]['roster']);
+        if(this.state.depthChart.length == 0) this.handleDepthChartUpdate(this.props.data['teams'][this.getParams().team]['depth-chart']);
     },
     componentWillUnmount: function(){
         this.unbind('roster');
@@ -54,6 +57,7 @@ var Office = React.createClass({
             if(this.state.rosterOrDepthChart == 'roster'){
                 return (
                     <Roster
+                        data={this.props.data}
                         username={this.getParams().username}
                         team={this.getParams().team}
                         roster={this.state.roster}
@@ -62,6 +66,7 @@ var Office = React.createClass({
             } else if(this.state.rosterOrDepthChart == 'depth-chart'){
                 return (
                     <DepthChart
+                        data={this.props.data}
                         username={this.getParams().username}
                         team={this.getParams().team}
                         depthChart={this.state.depthChart}
@@ -77,6 +82,7 @@ var Office = React.createClass({
             <div>
                 <div>
                     <Navigation
+                        data={this.props.data}
                         gotoRoster={this.gotoRoster}
                         gotoDepthChart={this.gotoDepthChart} />
                 </div>

@@ -5,13 +5,14 @@ var React = require('react');
 var TeamSelect = require('./TeamSelect');
 
 var Home = React.createClass({
+    propTypes: {
+        data: React.PropTypes.object.isRequired
+    },
     render: function(){
-        window.ROSTER_BUILDER_DATA = window.ROSTER_BUILDER_DATA || {};
-
         return (
             <h2 className="text-center">
                 Roster Builder. Select a team.
-                <TeamSelect />
+                <TeamSelect data={this.props.data} />
             </h2>
         )
     }
