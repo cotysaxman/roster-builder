@@ -10,7 +10,7 @@ var Home = React.createClass({
     },
     render: function(){
         return (
-            <h2 className="text-center">
+            <h2>
                 Roster Builder. Select a team.
                 <TeamSelect data={this.props.data} />
             </h2>

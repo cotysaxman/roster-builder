@@ -11,7 +11,7 @@ var Navigation = React.createClass({
     },
     render: function(){
         return (
-            <div class="row-md-12">
+            <div>
                 <button className="btn btn-block btn-primary" onClick={this.props.gotoRoster}>Roster</button>
                 <button className="btn btn-block btn-primary" onClick={this.props.gotoDepthChart}>Depth Chart</button>
             </div>

@@ -24,13 +24,13 @@ var RosterPositionGroup = React.createClass({
             }
         }
         var list = posPlayers.map((player, index)=>{
-            return <li className="list-group-item" key={index}><Player player={player} rosterUpdate={this.props.rosterUpdate} roster={this.props.roster} salaryCap={this.props.salaryCap} salaryCapUpdate={this.props.salaryCapUpdate} /></li>
+            return <div className="player center" key={index}><Player player={player} rosterUpdate={this.props.rosterUpdate} roster={this.props.roster} salaryCap={this.props.salaryCap} salaryCapUpdate={this.props.salaryCapUpdate} /></div>
         });
         return (
-            <ul>
-                <li className="list-group-item"><b>{this.props.group}</b></li>
+            <div>
+                <div className="center"><b>{this.props.group}</b></div>
                 {list}
-            </ul>
+            </div>
         )
     }
 });

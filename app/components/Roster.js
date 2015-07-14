@@ -7,61 +7,61 @@ var RosterPositionGroup = require('./RosterPositionGroup');
 var Roster = React.createClass({
     render: function(){
         return (
-            <div class="row-md-12">
-                <div class="col-md-8">
+            <div className="roster_parent">
+                <div className="roster_table">
                     <table>
-                        <tr><th>Offense</th></tr>
+                        <tr><th colSpan="8">Offense</th></tr>
                         <tr>
-                            <td><RosterPositionGroup group={"QB"}
+                            <td className="roster_column"><RosterPositionGroup group={"QB"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"RB"}
+                            <td className="roster_column"><RosterPositionGroup group={"RB"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"FB"}
+                            <td className="roster_column"><RosterPositionGroup group={"FB"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"WR"}
+                            <td className="roster_column"><RosterPositionGroup group={"WR"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"TE"}
+                            <td className="roster_column"><RosterPositionGroup group={"TE"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"OT"}
+                            <td className="roster_column"><RosterPositionGroup group={"OT"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"OG"}
+                            <td className="roster_column"><RosterPositionGroup group={"OG"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"OC"}
+                            <td className="roster_column"><RosterPositionGroup group={"OC"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
@@ -69,51 +69,51 @@ var Roster = React.createClass({
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
                         </tr>
-                        <tr><th>Defense</th></tr>
-                        <tr>
-                            <td><RosterPositionGroup group={"DT"}
+                        <tr><th colSpan="8">Defense</th></tr>
+                        <tr className="column_shift">
+                            <td className="roster_column"><RosterPositionGroup group={"DT"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"DE"}
+                            <td className="roster_column"><RosterPositionGroup group={"DE"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"ILB"}
+                            <td className="roster_column"><RosterPositionGroup group={"ILB"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"OLB"}
+                            <td className="roster_column"><RosterPositionGroup group={"OLB"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"CB"}
+                            <td className="roster_column"><RosterPositionGroup group={"CB"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"FS"}
+                            <td className="roster_column"><RosterPositionGroup group={"FS"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"SS"}
+                            <td className="roster_column"><RosterPositionGroup group={"SS"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
@@ -121,23 +121,24 @@ var Roster = React.createClass({
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
                         </tr>
-                        <tr><th>Special Teams</th></tr>
-                        <tr>
-                            <td><RosterPositionGroup group={"LS"}
+                        <tr><th colSpan="8">Special Teams</th></tr>
+                        <tr className="column_shift">
+                            <td colSpan="2"></td>
+                            <td className="roster_column"><RosterPositionGroup group={"LS"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"P"}
+                            <td className="roster_column"><RosterPositionGroup group={"P"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
                                                      rosterUpdate={this.props.rosterUpdate}
                                                      salaryCap={this.props.salaryCap}
                                                      salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                            <td><RosterPositionGroup group={"PK"}
+                            <td className="roster_column"><RosterPositionGroup group={"PK"}
                                                      data={this.props.data}
                                                      team={this.props.team}
                                                      roster={this.props.roster}
@@ -147,23 +148,25 @@ var Roster = React.createClass({
                         </tr>
                     </table>
                 </div>
-                <div class="col-md-4">
-                    <div>Salary Cap</div>
+                <div className="salary_cap_table">
                     <table>
                         <tr>
-                            <td>Contract Value</td><td>{parseInt(this.props.salaryCap['Total Salary'], 10)}</td>
+                            <th colSpan="2" className="center">Salary Cap</th>
                         </tr>
                         <tr>
-                            <td>Dead Money Value</td><td>{parseInt(this.props.salaryCap['Dead Money'], 10)}</td>
+                            <td className="left">Contract Value</td><td className="right">{parseInt(this.props.salaryCap['Total Salary'], 10)}</td>
                         </tr>
                         <tr>
-                            <td>Total Cap Expenditure</td><td>{parseInt(this.props.salaryCap['Total Salary'], 10) + parseInt(this.props.salaryCap['Dead Money'], 10)}</td>
+                            <td className="left">Dead Money Value</td><td className="right">{parseInt(this.props.salaryCap['Dead Money'], 10)}</td>
                         </tr>
                         <tr>
-                            <td>Adjusted Cap Space</td><td>{this.props.salaryCap['Adjusted Cap']}</td>
+                            <td className="left">Total Cap Expenditure</td><td className="right">{parseInt(this.props.salaryCap['Total Salary'], 10) + parseInt(this.props.salaryCap['Dead Money'], 10)}</td>
                         </tr>
                         <tr>
-                            <td>Remaining Cap Space</td><td>{this.props.salaryCap['Adjusted Cap'] - (parseInt(this.props.salaryCap['Total Salary'], 10) + parseInt(this.props.salaryCap['Dead Money'], 10))}</td>
+                            <td className="left">Adjusted Cap Space</td><td className="right">{this.props.salaryCap['Adjusted Cap']}</td>
+                        </tr>
+                        <tr>
+                            <td className="left">Remaining Cap Space</td><td className="right">{this.props.salaryCap['Adjusted Cap'] - (parseInt(this.props.salaryCap['Total Salary'], 10) + parseInt(this.props.salaryCap['Dead Money'], 10))}</td>
                         </tr>
                     </table>
                 </div>

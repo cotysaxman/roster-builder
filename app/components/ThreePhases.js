@@ -6,14 +6,14 @@ var React = require('react');
 var ThreePhases = React.createClass({
     render: function(){
         return (
-            <div className="row">
-                <div className="col-md-4">
+            <div>
+                <div>
                     Offense
                 </div>
-                <div className="col-md-4">
+                <div>
                     Defense
                 </div>
-                <div className="col-md-4">
+                <div>
                     Special Teams
                 </div>
             </div>

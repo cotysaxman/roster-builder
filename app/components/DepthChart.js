@@ -9,7 +9,7 @@ var FormationDisplay = require('./FormationDisplay');
 var DepthChart = React.createClass({
     render: function(){
         return (
-            <div className="col-md-12">
+            <div>
                 <ThreePhases />
                 <FormationMenu />
                 <FormationDisplay />

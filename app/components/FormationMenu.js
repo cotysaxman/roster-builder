@@ -7,10 +7,10 @@ var FormationMenu = React.createClass({
     formations: ['Full', 'Custom'],
     render: function(){
         var formationHtml = this.formations.map(function(fmtn, index){
-            return <div className="col-md-6" id={fmtn} key={index}>{fmtn}</div>
+            return <div id={fmtn} key={index}>{fmtn}</div>
         });
         return (
-            <div className="row-md-12">
+            <div>
                 {formationHtml}
             </div>
         )

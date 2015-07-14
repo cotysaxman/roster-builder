@@ -35,9 +35,9 @@ var TeamSelect = React.createClass({
     },
     render: function(){
         return (
-            <div class="col-md-3">
+            <div>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="form-group col-sm-4">
+                    <div>
                         <select id="teamSelectDropdown" ref="teamSelect">
                             <option value="ARZ">Arizona Cardinals</option>
                             <option value="ATL">Atlanta Falcons</option>
@@ -73,11 +73,11 @@ var TeamSelect = React.createClass({
                             <option value="WAS">Washington Redskins</option>
                         </select>
                     </div>
-                    <div className="form-group col-sm-4">
-                        <input type="text" className="form-control" ref="username" />
+                    <div>
+                        <input type="text" ref="username" />
                     </div>
-                    <div className="form-group col-sm-4">
-                        <button type="submit" className="btn btn-block btn-primary">To the Office</button>
+                    <div>
+                        <button type="submit">To the Office</button>
                     </div>
                 </form>
             </div>
