@@ -148,28 +148,26 @@ var Roster = React.createClass({
                         </tr>
                     </table>
                 </div>
-                <div className="salary_cap_table">
-                    <table>
-                        <tr>
-                            <th colSpan="2" className="center">Salary Cap</th>
-                        </tr>
-                        <tr>
-                            <td className="left">Contract Value</td><td className="right">{parseInt(this.props.salaryCap['Total Salary'], 10)}</td>
-                        </tr>
-                        <tr>
-                            <td className="left">Dead Money Value</td><td className="right">{parseInt(this.props.salaryCap['Dead Money'], 10)}</td>
-                        </tr>
-                        <tr>
-                            <td className="left">Total Cap Expenditure</td><td className="right">{parseInt(this.props.salaryCap['Total Salary'], 10) + parseInt(this.props.salaryCap['Dead Money'], 10)}</td>
-                        </tr>
-                        <tr>
-                            <td className="left">Adjusted Cap Space</td><td className="right">{this.props.salaryCap['Adjusted Cap']}</td>
-                        </tr>
-                        <tr>
-                            <td className="left">Remaining Cap Space</td><td className="right">{this.props.salaryCap['Adjusted Cap'] - (parseInt(this.props.salaryCap['Total Salary'], 10) + parseInt(this.props.salaryCap['Dead Money'], 10))}</td>
-                        </tr>
-                    </table>
-                </div>
+                <table className="salary_cap_table">
+                    <tr>
+                        <th colSpan="2" className="center">Salary Cap</th>
+                    </tr>
+                    <tr>
+                        <td className="left">Contract Value</td><td className="right">{parseInt(this.props.salaryCap['Total Salary'], 10)}</td>
+                    </tr>
+                    <tr>
+                        <td className="left">Dead Money Value</td><td className="right">{parseInt(this.props.salaryCap['Dead Money'], 10)}</td>
+                    </tr>
+                    <tr>
+                        <td className="left">Total Cap Expenditure</td><td className="right">{parseInt(this.props.salaryCap['Total Salary'], 10) + parseInt(this.props.salaryCap['Dead Money'], 10)}</td>
+                    </tr>
+                    <tr>
+                        <td className="left">Adjusted Cap Space</td><td className="right">{this.props.salaryCap['Adjusted Cap']}</td>
+                    </tr>
+                    <tr>
+                        <td className="left">Remaining Cap Space</td><td className="right">{this.props.salaryCap['Adjusted Cap'] - (parseInt(this.props.salaryCap['Total Salary'], 10) + parseInt(this.props.salaryCap['Dead Money'], 10))}</td>
+                    </tr>
+                </table>
             </div>
         )
     }

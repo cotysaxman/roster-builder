@@ -1,7 +1,25 @@
 /**
  * Created by Coty-Saxman on 7/7/2015.
  */
-.popup_background{
+.app_main {
+    margin: auto;
+    width: 1280px;
+    height: 800px;
+    border: 1px solid black;
+}
+@media (max-width: 1023px) {
+    .app_main {
+        width: 98%;
+        overflow: scroll;
+    }
+}
+@media (max-height: 575px) {
+    .app_main {
+        height: 98%;
+        overflow: scroll;
+    }
+}
+.popup_background {
     position: fixed;
     top: 0;
     left: 0;
@@ -56,9 +74,12 @@
 .salary_cap_table {
     position: absolute;
     top: 0;
-    right: 1%;
+    left: 75%;
     width: 24%;
     height: 100%;
+    background-color: lightgray;
+    border: 1px black solid;
+    z-index: 1;
 }
 .left {
     text-align: left;
