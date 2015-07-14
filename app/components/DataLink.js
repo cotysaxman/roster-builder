@@ -10,11 +10,15 @@ var DataLink = React.createClass({
     },
     componentDidMount: function() {
         //data
-        this.dataRef = new Firebase('https://boiling-fire-929.firebaseio.com/roster-builder/');
-        this.dataRef.on('value', function (snapshot) {
-            this.props.setData(snapshot.val());
-            this.dataRef.off();
-        }.bind(this));
+        //if(!window.DOONCE){
+            this.dataRef = new Firebase('https://boiling-fire-929.firebaseio.com/roster-builder/');
+            this.dataRef.on('value', function (snapshot) {
+                this.props.setData(snapshot.val());
+                this.dataRef.off();
+            }.bind(this));
+        //}
+        //window.DOONCE = true;
+
     },
     componentWillUnmount: function(){
         this.dataRef.off();

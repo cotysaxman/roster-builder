@@ -5,7 +5,16 @@ var React = require('react');
 
 var Player = React.createClass({
     propTypes: {
-        player: React.PropTypes.object.isRequired
+        player: React.PropTypes.object.isRequired,
+        rosterUpdate: React.PropTypes.func.isRequired,
+        roster: React.PropTypes.array.isRequired,
+        salaryCap: React.PropTypes.object.isRequired,
+        salaryCapUpdate: React.PropTypes.func.isRequired
+    },
+    getInitialState: function(){
+        return {
+            windowOpen: false
+        }
     },
     eightFractionChar(num){
         switch(num){
@@ -234,7 +243,7 @@ var Player = React.createClass({
         };
         return (
             <div>
-                <div className="popup_background" onClick={()=>window.ROSTER_BUILDER_DATA.eraseElement(this.props.player['Name'])}>
+                <div className="popup_background" onClick={this.hidePopup}>
                 </div>
                 <div className="popup_player_window" onClick={event=>event.stopPropagation()}>
                     <div style={headerStyle}></div>
@@ -249,34 +258,38 @@ var Player = React.createClass({
                         <div style={futDMLabelBox}>Carryover Cap Penalty if Cut</div><div style={futDMBox}>${p['Future Dead Money']}</div>
                         <div style={totDMLabelBox}>Total Cap Penalty if Cut</div><div style={totDMBox}>${p['Total Dead Money']}</div>
                     </div>
-                    <div style={footerStyle} onClick={()=>window.ROSTER_BUILDER_DATA.cutPlayer(this.props.player['key'])}>CLICK TO CUT</div>
+                    <div style={footerStyle} onClick={this.cutPlayer}>CLICK TO CUT</div>
                 </div>
             </div>
         )
     },
+    cutPlayer: function(){
+        this.props.roster.splice(this.props.roster.indexOf(this.props.player['key']), 1);
+        this.props.rosterUpdate(this.props.roster);
+        var newSalCap = this.props.salaryCap;
+        newSalCap['Dead Money'] = parseInt(newSalCap['Dead Money'], 10) + (parseInt(this.props.player['June 1st Dead Money'], 10) || 0);
+        newSalCap['Total Salary'] = parseInt(newSalCap['Total Salary'], 10) - (parseInt(this.props.player['Current Salary'], 10) || 0);
+        this.props.salaryCapUpdate(newSalCap);
+        this.hidePopup();
+    },
     showPopup: function(){
-        var p = this.props.player;
-        window.ROSTER_BUILDER_DATA.eraseElement = function(name){
-            document.getElementById(name + "hide_div").innerHTML = "";
-            console.log("erased");
-        };
-        window.ROSTER_BUILDER_DATA.cutPlayer = function(id){
-            console.log("CUT player " + id);
-            window.ROSTER_BUILDER_DATA['teams'][window.ROSTER_BUILDER_DATA.team].roster.splice(window.ROSTER_BUILDER_DATA['teams'][window.ROSTER_BUILDER_DATA.team].roster.indexOf(id), 1);
-        };
-        var element = document.getElementById(p['Name'] + "hide_div");
-        if(!element){
-            element = document.createElement("div");
-            element.id = p['Name'] + "hide_div";
-            document.body.appendChild(element);
-        }
-        React.render(this.popupDiv(), element);
+        this.setState({
+            windowOpen: true
+        });
+    },
+    hidePopup: function(){
+        this.setState({
+            windowOpen: false
+        });
     },
     render: function(){
         var p = this.props.player;
         return (
-            <div onClick={this.showPopup}>
-                {p.Name}
+            <div>
+                {this.state.windowOpen? this.popupDiv() : null}
+                <div onClick={this.showPopup}>
+                    {p['Name']}
+                </div>
             </div>
         )
     }

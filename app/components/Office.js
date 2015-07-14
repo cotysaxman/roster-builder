@@ -19,28 +19,38 @@ var Office = React.createClass({
             user: this.getParams().username,
             rosterOrDepthChart: null,
             roster: [],
-            depthChart: []
+            depthChart: [],
+            salaryCap: {}
         }
+    },
+    resetUserData: function(){
+        this.handleRosterUpdate(this.props.data['teams'][this.getParams().team]['roster']);
+        this.handleDepthChartUpdate(this.props.data['teams'][this.getParams().team]['depth-chart']);
+        this.handleSalaryCapUpdate(this.props.data['teams'][this.getParams().team]['salary-cap']);
     },
     componentDidMount: function(){
         this.ref = new Firebase('https://boiling-fire-929.firebaseio.com/roster-builder/users/');
         var childRef = this.ref.child(this.getParams().username + '/' + this.getParams().team);
         this.rosterRef = childRef.child('roster');
         this.depthChartRef = childRef.child('depth-chart');
+        this.salaryCapRef = childRef.child('salary-cap');
         this.bindAsArray(this.rosterRef, 'roster');
         this.bindAsArray(this.depthChartRef, 'depthChart');
-        if(this.state.roster.length == 0) this.handleRosterUpdate(this.props.data['teams'][this.getParams().team]['roster']);
-        if(this.state.depthChart.length == 0) this.handleDepthChartUpdate(this.props.data['teams'][this.getParams().team]['depth-chart']);
+        this.bindAsObject(this.salaryCapRef, 'salaryCap');
     },
     componentWillUnmount: function(){
         this.unbind('roster');
         this.unbind('depthChart');
+        this.unbind('salaryCap');
     },
     handleRosterUpdate: function(newRoster){
         this.rosterRef.set(newRoster);
     },
     handleDepthChartUpdate: function(newDepthChart){
         this.depthChartRef.set(newDepthChart);
+    },
+    handleSalaryCapUpdate: function(newSalaryCap){
+        this.salaryCapRef.set(newSalaryCap);
     },
     gotoRoster: function(){
         this.setState({
@@ -61,7 +71,9 @@ var Office = React.createClass({
                         username={this.getParams().username}
                         team={this.getParams().team}
                         roster={this.state.roster}
-                        rosterUpdate={this.handleRosterUpdate} />
+                        rosterUpdate={this.handleRosterUpdate}
+                        salaryCap={this.state.salaryCap}
+                        salaryCapUpdate={this.handleSalaryCapUpdate} />
                 )
             } else if(this.state.rosterOrDepthChart == 'depth-chart'){
                 return (
@@ -70,7 +82,9 @@ var Office = React.createClass({
                         username={this.getParams().username}
                         team={this.getParams().team}
                         depthChart={this.state.depthChart}
-                        depthChartUpdate={this.handleDepthChartUpdate} />
+                        depthChartUpdate={this.handleDepthChartUpdate}
+                        salaryCap={this.state.salaryCap}
+                        salaryCapUpdate={this.handleSalaryCapUpdate} />
                 )
             } else {
                 return (
@@ -85,6 +99,7 @@ var Office = React.createClass({
                         data={this.props.data}
                         gotoRoster={this.gotoRoster}
                         gotoDepthChart={this.gotoDepthChart} />
+                    <button onClick={this.resetUserData}>Reset Roster/Depth Chart Data</button>
                 </div>
                 <div>
                     {rosterOrDepthChart()}

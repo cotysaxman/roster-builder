@@ -18,13 +18,19 @@ var TeamSelect = React.createClass({
         //DOWNLOAD CODE//
         var roster = (this.props.data['teams'][team].roster);
         console.log(roster);
-        for(var i = 0; i < roster.length; i++){
-            var id = roster[i];
-            if(!this.props.data.players[id] || !this.props.data.players[id]['Current Salary']){
-                helpers.player(id);
-                console.log("downloading player: " + id);
-            }
-        }
+        //if(!roster){
+        //    helpers.roster(team);
+        //    console.log("downloading team: " + team);
+        //} else for(var i = 0; i < roster.length; i++){
+        //    var id = roster[i];
+        //    if(!this.props.data.players[id] ||
+        //        !this.props.data.players[id]['Current Salary'] ||
+        //        !this.props.data.players[id]['Img URL'] ||
+        //        !this.props.data.players[id]['key']){
+        //        helpers.player(id);
+        //        console.log("downloading player: " + id);
+        //    }
+        //}
         this.transitionTo('office', {username: username, team: team});
     },
     render: function(){

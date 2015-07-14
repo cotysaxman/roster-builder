@@ -10,7 +10,9 @@ var RosterPositionGroup = React.createClass({
         group: React.PropTypes.string.isRequired,
         team: React.PropTypes.string.isRequired,
         roster: React.PropTypes.array.isRequired,
-        rosterUpdate: React.PropTypes.func.isRequired
+        rosterUpdate: React.PropTypes.func.isRequired,
+        salaryCap: React.PropTypes.object.isRequired,
+        salaryCapUpdate: React.PropTypes.func.isRequired
     },
     render: function(){
         var posPlayers = [];
@@ -21,8 +23,8 @@ var RosterPositionGroup = React.createClass({
                 posPlayers.push(player);
             }
         }
-        var list = posPlayers.map(function(player, index){
-            return <li className="list-group-item" key={index}><Player player={player} /></li>
+        var list = posPlayers.map((player, index)=>{
+            return <li className="list-group-item" key={index}><Player player={player} rosterUpdate={this.props.rosterUpdate} roster={this.props.roster} salaryCap={this.props.salaryCap} salaryCapUpdate={this.props.salaryCapUpdate} /></li>
         });
         return (
             <ul>
