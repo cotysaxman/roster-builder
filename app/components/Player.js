@@ -171,7 +171,7 @@ var Player = React.createClass({
             position: "absolute",
             right: "1%",
             top: "51%",
-            width: "28%",
+            width: "29%",
             height: "12%",
             border: "1px solid black",
             textAlign: "right",
@@ -192,7 +192,7 @@ var Player = React.createClass({
             position: "absolute",
             right: "1%",
             top: "63%",
-            width: "28%",
+            width: "29%",
             height: "12%",
             border: "1px solid black",
             textAlign: "right",
@@ -213,7 +213,7 @@ var Player = React.createClass({
             position: "absolute",
             right: "1%",
             top: "75%",
-            width: "28%",
+            width: "29%",
             height: "12%",
             border: "1px solid black",
             textAlign: "right",
@@ -234,7 +234,7 @@ var Player = React.createClass({
             position: "absolute",
             right: "1%",
             top: "87%",
-            width: "28%",
+            width: "29%",
             height: "12%",
             border: "1px solid black",
             textAlign: "right",
@@ -251,7 +251,7 @@ var Player = React.createClass({
                         <div style={imgBoxStyle}></div>
                         <div style={infoBoxStyle}>
                             <div style={numBox}>#{p['Number']}</div><div style={nameBox}>{p['Name'].toUpperCase()}</div><div style={posBox}>{p['Position']}</div>
-                            <div style={htBox}>{p['Height'].charAt(0)}'{parseInt("" + p['Height'].charAt(1) + p['Height'].charAt(2), 10) + this.eightFractionChar(p['Height'].charAt(3))}"</div><div style={wtBox}>{p['Weight']}lbs</div><div style={ageBox}>{p['Age']}yrs</div>
+                            <div style={htBox}>{p['Height'].charAt(0)}'{parseInt("" + p['Height'].charAt(1) + p['Height'].charAt(2), 10) + this.eightFractionChar(p['Height'].charAt(3))}"</div><div style={wtBox}>{p['Weight']} lbs.</div><div style={ageBox}>{p['Age']}yrs</div>
                         </div>
                         <div style={curSalLabelBox}>Current Salary Cap Number</div><div style={curSalBox}>${p['Current Salary']}</div>
                         <div style={curDMLabelBox}>Current Year Penalty if Cut</div><div style={curDMBox}>${p['June 1st Dead Money']}</div>
@@ -264,8 +264,8 @@ var Player = React.createClass({
         )
     },
     cutPlayer: function(){
-        this.props.roster.splice(this.props.roster.indexOf(this.props.player['key']), 1);
-        this.props.rosterUpdate(this.props.roster);
+        var newRoster = this.props.roster;
+        this.props.rosterUpdate(newRoster);
         var newSalCap = this.props.salaryCap;
         newSalCap['Dead Money'] = parseInt(newSalCap['Dead Money'], 10) + (parseInt(this.props.player['June 1st Dead Money'], 10) || 0);
         newSalCap['Total Salary'] = parseInt(newSalCap['Total Salary'], 10) - (parseInt(this.props.player['Current Salary'], 10) || 0);

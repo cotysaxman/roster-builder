@@ -19,7 +19,8 @@ var RosterPositionGroup = React.createClass({
         var fullRoster = this.props.roster;
         for(var i = 0; i < fullRoster.length; i++){
             var player = this.props.data.players[fullRoster[i]];
-            if(player['Position'] == this.props.group){
+            if(player['Status'] == this.props.group ||
+                (player['Position'] == this.props.group && (player['Status'] == "" || player['Status'] == "Franchise Player"))){
                 posPlayers.push(player);
             }
         }
@@ -28,7 +29,7 @@ var RosterPositionGroup = React.createClass({
         });
         return (
             <div>
-                <div className="center"><b>{this.props.group}</b></div>
+                <div className="center"><b>{this.props.group} ({posPlayers.length})</b></div>
                 {list}
             </div>
         )

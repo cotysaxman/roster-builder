@@ -53,11 +53,13 @@ var Office = React.createClass({
         this.salaryCapRef.set(newSalaryCap);
     },
     gotoRoster: function(){
+        if(!this.state.roster) this.resetUserData();
         this.setState({
             rosterOrDepthChart: 'roster'
         });
     },
     gotoDepthChart: function(){
+        if(!this.state.roster) this.resetUserData();
         this.setState({
             rosterOrDepthChart: 'depth-chart'
         });

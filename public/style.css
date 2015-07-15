@@ -1,19 +1,25 @@
 /**
  * Created by Coty-Saxman on 7/7/2015.
  */
+html, body {
+    height: 100%;
+    margin: auto;
+}
 .app_main {
+    position: absolute;
     margin: auto;
     width: 1280px;
     height: 800px;
     border: 1px solid black;
+    background-color: lightblue;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1280px) {
     .app_main {
         width: 98%;
         overflow: scroll;
     }
 }
-@media (max-height: 575px) {
+@media (max-height: 800px) {
     .app_main {
         height: 98%;
         overflow: scroll;
@@ -56,10 +62,12 @@
 .roster_table {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 74%;
+    left: 1%;
+    width: 73%;
     height: 100%;
     align-content: flex-start;
+    border: 1px solid black;
+    background-color: white;
 }
 .roster_column {
     position: relative;
@@ -67,9 +75,7 @@
     vertical-align: top;
 }
 .column_shift {
-    transform: translateX(6.25%);
-    -moz-transform: translateX(6.25%);
-    -webkit-transform: translateX(6.25%);
+    left: 6.25%;
 }
 .salary_cap_table {
     position: absolute;
@@ -95,5 +101,21 @@
 }
 .player {
     font-size: small;
-    border: 1px lightgray solid;
+    border-top: 1px lightgray dashed;
+    min-height: 2.5vh;
+}
+.total_spend {
+    background-color: #ffff00;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+.adjusted_cap {
+    background-color: #ffffff;
+    border-bottom: 1px solid black;
+}
+.pos_cap_space {
+    background-color: #00ff00;
+}
+.neg_cap_space {
+    background-color: #ff0000;
 }
