@@ -32,25 +32,20 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: black;
-    z-index:1001;
+    z-index:999;
     -moz-opacity: 0.8;
     opacity:.80;
     filter: alpha(opacity=80);
 }
 .popup_player_window {
     position: fixed;
-    top: 33%;
-    left: 33%;
-    width: 33%;
-    height: 33%;
-    padding: 16px;
-    border: 16px solid orange;
-    background-color: white;
-    z-index:1002;
-    overflow: auto;
-    -moz-opacity: 1;
-    opacity:1;
-    filter: alpha(opacity=100);
+    top: calc((100% - 275px)/2);
+    left: calc((100% - 450px)/2);
+    width: 450px;
+    height: 275px;
+    background-color: transparent;
+    z-index:1000;
+    overflow: visible;
 }
 .roster_parent {
     position: relative;
@@ -72,6 +67,11 @@ html, body {
 .roster_column {
     position: relative;
     width: 12.5%;
+    vertical-align: top;
+}
+.half_roster_column {
+    position: relative;
+    width: 6.25%;
     vertical-align: top;
 }
 .column_shift {
@@ -118,4 +118,49 @@ html, body {
 }
 .neg_cap_space {
     background-color: #ff0000;
+}
+.player_tabs {
+    position: relative;
+    height: 100%;
+    clear: both;
+    margin: 25px 0;
+    z-index: 1001;
+}
+.player_tab {
+    float: left;
+    z-index: 1001;
+}
+.player_tab label {
+    background: #eee;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-left: -1px;
+    position: relative;
+    left: 1px;
+    z-index: 1003;
+}
+.player_tab [type=radio] {
+    display: none;
+}
+.player_content {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    background: white;
+    right: 0;
+    bottom: 0;
+    /*padding: 20px;*/
+    border: 1px solid #ccc;
+    z-index: 1001;
+}
+.player_content div {
+    z-index: 1001;
+}
+[type=radio]:checked ~ label {
+    background: white;
+    border-bottom: 1px solid white;
+    z-index: 1003;
+}
+[type=radio]:checked ~ label ~ .player_content {
+    z-index: 1002;
 }

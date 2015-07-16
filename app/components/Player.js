@@ -36,6 +36,91 @@ var Player = React.createClass({
                 return "";
         }
     },
+    yearsString: function(num){
+        if(num == 'R') return "rookie";
+        else return this.orderString(num) + "-year";
+    },
+    orderString: function(num){
+        num = parseInt(num, 10);
+        var suffix = "th";
+        if(num > 3 && num < 21) return num + suffix;
+        var onesDigit = num%10 + "";
+        switch(onesDigit){
+            case '1': suffix = "st";
+                break;
+            case '2': suffix = "nd";
+                break;
+            case '3': suffix = "rd";
+                break;
+        }
+        return num + suffix;
+    },
+    positionString: function(pos){
+        switch(pos){
+            case 'QB': return 'quarterback';
+            case 'RB': return 'running back';
+            case 'FB': return 'fullback';
+            case 'WR': return 'wide receiver';
+            case 'TE': return 'tight end';
+            case 'OT': return 'offensive tackle';
+            case 'OG': return 'offensive guard';
+            case 'OC': return 'offensive center';
+            case 'DT': return 'defensive tackle';
+            case 'DE': return 'defensive end';
+            case 'CB': return 'cornerback';
+            case 'FS': return 'free safety';
+            case 'SS': return 'strong safety';
+            case 'ILB': return 'inside linebacker';
+            case 'OLB': return 'outside linebacker';
+            case 'LS': return 'long snapper';
+            case 'P': return 'punter';
+            case 'PK': return 'place kicker';
+            default: return 'player';
+        }
+    },
+    teamString: function(tm){
+        switch(tm){
+            case 'ARZ': return 'Arizona Cardinals';
+            case 'ATL': return 'Atlanta Falcons';
+            case 'BAL': return 'Baltimore Ravens';
+            case 'BUF': return 'Buffalo Bills';
+            case 'CAR': return 'Carolina Panthers';
+            case 'CHI': return 'Chicago Bears';
+            case 'CIN': return 'Cincinnati Bengals';
+            case 'CLE': return 'Cleveland Browns';
+            case 'DAL': return 'Dallas Cowboys';
+            case 'DEN': return 'Denver Broncos';
+            case 'DET': return 'Detroit Lions';
+            case 'GB': return 'Green Bay Packers';
+            case 'HOU': return 'Houston Texans';
+            case 'IND': return 'Indianapolis Colts';
+            case 'JAX': return 'Jacksonville Jaguars';
+            case 'KC': return 'Kansas City Chiefs';
+            case 'MIA': return 'Miami Dolphins';
+            case 'MIN': return 'Minnesota Vikings';
+            case 'NE': return 'New England Patriots';
+            case 'NO': return 'New Orleans Saints';
+            case 'NYG': return 'New York Giants';
+            case 'NYJ': return 'New York Jets';
+            case 'OAK': return 'Oakland Raiders';
+            case 'PHI': return 'Philadelphia Eagles';
+            case 'PIT': return 'Pittsburgh Steelers';
+            case 'SD': return 'San Diego Chargers';
+            case 'SEA': return 'Seattle Seahawks';
+            case 'SF': return 'San Francisco 49ers';
+            case 'STL': return 'St Louis Rams';
+            case 'TB': return 'Tampa Bay Buccaneers';
+            case 'TEN': return 'Tennessee Titans';
+            case 'WAS': return 'Washington Redskins';
+            default: return 'team that eventually signs him';
+        }
+    },
+    calyearString: function(yr){
+        return ((parseInt(yr, 10) < 50)? "20":"19") + yr;
+    },
+    heightString: function(ht){
+        return ht.charAt(0) + '\'' + parseInt('' + ht.charAt(1) + ht.charAt(2), 10) + this.eightFractionChar(ht.charAt(3)) + '"';
+    },
     popupDiv: function(){
         var p = this.props.player;
         var headerStyle = {
@@ -243,22 +328,51 @@ var Player = React.createClass({
         };
         return (
             <div>
-                <div className="popup_background" onClick={this.hidePopup}>
+                <div className="popup_background" onClick={event=>this.hidePopup(event)}>
                 </div>
-                <div className="popup_player_window" onClick={event=>event.stopPropagation()}>
-                    <div style={headerStyle}></div>
-                    <div style={bodyStyle}>
-                        <div style={imgBoxStyle}></div>
-                        <div style={infoBoxStyle}>
-                            <div style={numBox}>#{p['Number']}</div><div style={nameBox}>{p['Name'].toUpperCase()}</div><div style={posBox}>{p['Position']}</div>
-                            <div style={htBox}>{p['Height'].charAt(0)}'{parseInt("" + p['Height'].charAt(1) + p['Height'].charAt(2), 10) + this.eightFractionChar(p['Height'].charAt(3))}"</div><div style={wtBox}>{p['Weight']} lbs.</div><div style={ageBox}>{p['Age']}yrs</div>
+                <div className="popup_player_window">
+                    <div className="player_tabs">
+                        <div className="player_tab">
+                            <input type="radio" id="player_info_tab" name="player_tab_group" value="info" defaultChecked />
+                            <label htmlFor="player_info_tab">Main</label>
+                            <div className="player_content">
+                                <div style={headerStyle}></div>
+                                <div style={bodyStyle}>
+                                    <div style={imgBoxStyle}></div>
+                                    <div style={infoBoxStyle}>
+                                        <div style={numBox}>#{p['Number']}</div><div style={nameBox}>{p['Name'].toUpperCase()}</div><div style={posBox}>{p['Position']}</div>
+                                        <div style={htBox}>{this.heightString(p['Height'])}</div><div style={wtBox}>{p['Weight']} lbs.</div><div style={ageBox}>{p['Age']}yrs</div>
+                                    </div>
+                                    <div style={curSalLabelBox}>Current Salary Cap Number</div><div style={curSalBox}>${p['Current Salary']}</div>
+                                    <div style={curDMLabelBox}>Current Year Penalty if Cut</div><div style={curDMBox}>${p['June 1st Dead Money']}</div>
+                                    <div style={futDMLabelBox}>Carryover Cap Penalty if Cut</div><div style={futDMBox}>${p['Future Dead Money']}</div>
+                                    <div style={totDMLabelBox}>Total Cap Penalty if Cut</div><div style={totDMBox}>${p['Total Dead Money']}</div>
+                                </div>
+                                <div style={footerStyle} onClick={this.cutPlayer}>CLICK TO CUT</div>
+                            </div>
                         </div>
-                        <div style={curSalLabelBox}>Current Salary Cap Number</div><div style={curSalBox}>${p['Current Salary']}</div>
-                        <div style={curDMLabelBox}>Current Year Penalty if Cut</div><div style={curDMBox}>${p['June 1st Dead Money']}</div>
-                        <div style={futDMLabelBox}>Carryover Cap Penalty if Cut</div><div style={futDMBox}>${p['Future Dead Money']}</div>
-                        <div style={totDMLabelBox}>Total Cap Penalty if Cut</div><div style={totDMBox}>${p['Total Dead Money']}</div>
+                        <div className="player_tab">
+                            <input type="radio" id="player_bio_tab" value="bio" name="player_tab_group" />
+                            <label htmlFor="player_bio_tab">Bio</label>
+                            <div className="player_content">
+                                <div style={headerStyle}></div>
+                                <div style={bodyStyle}>
+                                    <p>
+                                        {p['Name']} is a {this.yearsString(p['NFL Exp'])} {this.positionString(p['Position'])} for the {this.teamString(p['Team'])} wearing number {p['Number']}.
+                                    </p><p>
+                                        The {this.heightString(p['Height'])}, {p['Weight']}-pounder was born {p['DOB']}. He is currently {p['Age']} years old.
+                                    </p><p style={{display: p['NFL Entry'].indexOf('CFA') != -1? "block":"none"}}>
+                                        He entered the league as an undrafted free agent in {this.calyearString(p['NFL Entry'].split(' ')[0])} after signing with the {this.teamString(p['Original Team'].split(' ')[0])}.
+                                    </p><p style={{display: p['NFL Entry'].split(' ').length == 3? "block":"none"}}>
+                                        He was drafted in the {this.orderString(parseInt(p['NFL Entry'].split(' ')[1], 10))} round with the
+                                        {" " + this.orderString(parseInt(p['NFL Entry'].split(' ')[2], 10))}-overall pick of the
+                                        {" " + this.calyearString(p['NFL Entry'].split(' ')[0])} NFL Draft by the {this.teamString(p['Original Team'].split(' ')[0])}.
+                                    </p>
+                                </div>
+                                <div style={footerStyle}></div>
+                            </div>
+                        </div>
                     </div>
-                    <div style={footerStyle} onClick={this.cutPlayer}>CLICK TO CUT</div>
                 </div>
             </div>
         )
@@ -277,10 +391,12 @@ var Player = React.createClass({
             windowOpen: true
         });
     },
-    hidePopup: function(){
-        this.setState({
-            windowOpen: false
-        });
+    hidePopup: function(event){
+        if(!event || (event && event.target.className == "popup_background")) {
+            this.setState({
+                windowOpen: false
+            });
+        }
     },
     render: function(){
         var p = this.props.player;

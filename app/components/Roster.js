@@ -15,11 +15,11 @@ var Roster = React.createClass({
             <div className="roster_parent">
                 <table className="roster_table">
                     <caption>Roster</caption>
-                    <tr><th colSpan="16">Offense</th></tr>
+                    <tr><th colSpan="16" className="center">Offense</th></tr>
                     <tr>
-                        <th colSpan="6">Offensive Backs</th>
-                        <th colSpan="4">Receivers</th>
-                        <th colSpan="6">Offensive Linemen</th>
+                        <th colSpan="6" className="center">Offensive Backs</th>
+                        <th colSpan="4" className="center">Receivers</th>
+                        <th colSpan="6" className="center">Offensive Linemen</th>
                     </tr>
                     <tr>
                         <td colSpan="2" className="roster_column"><RosterPositionGroup group={"QB"}
@@ -79,16 +79,16 @@ var Roster = React.createClass({
                                                  salaryCap={this.props.salaryCap}
                                                  salaryCapUpdate={this.props.salaryCapUpdate} /></td>
                     </tr>
-                    <tr><th colSpan="16">Defense</th></tr>
+                    <tr><th colSpan="16" className="center">Defense</th></tr>
                     <tr>
-                        <td></td>
-                        <th colSpan="4">Rushmen</th>
-                        <th colSpan="4">Linebackers</th>
-                        <th colSpan="6">Defensive Backs</th>
-                        <td></td>
+                        <td className="half_roster_column"></td>
+                        <th colSpan="4" className="center">Rushmen</th>
+                        <th colSpan="6" className="center">Defensive Backs</th>
+                        <th colSpan="4" className="center">Linebackers</th>
+                        <td className="half_roster_column"></td>
                     </tr>
                     <tr>
-                        <td></td>
+                        <td className="half_roster_column"></td>
                         <td colSpan="2" className="roster_column"><RosterPositionGroup group={"DT"}
                                                  data={this.props.data}
                                                  team={this.props.team}
@@ -103,6 +103,30 @@ var Roster = React.createClass({
                                                  rosterUpdate={this.props.rosterUpdate}
                                                  salaryCap={this.props.salaryCap}
                                                  salaryCapUpdate={this.props.salaryCapUpdate} /></td>
+                        <td colSpan="2" className="roster_column">
+                            <RosterPositionGroup
+                                    group={"CB"}
+                                    data={this.props.data}
+                                    team={this.props.team}
+                                    roster={this.props.roster}
+                                    rosterUpdate={this.props.rosterUpdate}
+                                    salaryCap={this.props.salaryCap}
+                                    salaryCapUpdate={this.props.salaryCapUpdate} />
+                        </td>
+                        <td colSpan="2" className="roster_column"><RosterPositionGroup group={"FS"}
+                                                                                       data={this.props.data}
+                                                                                       team={this.props.team}
+                                                                                       roster={this.props.roster}
+                                                                                       rosterUpdate={this.props.rosterUpdate}
+                                                                                       salaryCap={this.props.salaryCap}
+                                                                                       salaryCapUpdate={this.props.salaryCapUpdate} /></td>
+                        <td colSpan="2" className="roster_column"><RosterPositionGroup group={"SS"}
+                                                                                       data={this.props.data}
+                                                                                       team={this.props.team}
+                                                                                       roster={this.props.roster}
+                                                                                       rosterUpdate={this.props.rosterUpdate}
+                                                                                       salaryCap={this.props.salaryCap}
+                                                                                       salaryCapUpdate={this.props.salaryCapUpdate} /></td>
                         <td colSpan="2" className="roster_column"><RosterPositionGroup group={"ILB"}
                                                  data={this.props.data}
                                                  team={this.props.team}
@@ -117,35 +141,14 @@ var Roster = React.createClass({
                                                  rosterUpdate={this.props.rosterUpdate}
                                                  salaryCap={this.props.salaryCap}
                                                  salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                        <td colSpan="2" className="roster_column"><RosterPositionGroup group={"CB"}
-                                                 data={this.props.data}
-                                                 team={this.props.team}
-                                                 roster={this.props.roster}
-                                                 rosterUpdate={this.props.rosterUpdate}
-                                                 salaryCap={this.props.salaryCap}
-                                                 salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                        <td colSpan="2" className="roster_column"><RosterPositionGroup group={"FS"}
-                                                 data={this.props.data}
-                                                 team={this.props.team}
-                                                 roster={this.props.roster}
-                                                 rosterUpdate={this.props.rosterUpdate}
-                                                 salaryCap={this.props.salaryCap}
-                                                 salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                        <td colSpan="2" className="roster_column"><RosterPositionGroup group={"SS"}
-                                                 data={this.props.data}
-                                                 team={this.props.team}
-                                                 roster={this.props.roster}
-                                                 rosterUpdate={this.props.rosterUpdate}
-                                                 salaryCap={this.props.salaryCap}
-                                                 salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                        <td></td>
+                        <td className="half_roster_column"></td>
                     </tr>
                     <tr>
-                        <th colSpan="8">Special Teams</th>
-                        <th colSpan="8">Other</th>
+                        <th colSpan="8" className="center">Special Teams</th>
+                        <th colSpan="8" className="center">Other</th>
                     </tr>
                     <tr>
-                        <td></td>
+                        <td className="half_roster_column"></td>
                         <td colSpan="2" className="roster_column"><RosterPositionGroup group={"LS"}
                                                  data={this.props.data}
                                                  team={this.props.team}
@@ -167,7 +170,7 @@ var Roster = React.createClass({
                                                  rosterUpdate={this.props.rosterUpdate}
                                                  salaryCap={this.props.salaryCap}
                                                  salaryCapUpdate={this.props.salaryCapUpdate} /></td>
-                        <td></td>
+                        <td className="half_roster_column"></td>
                         <td colSpan="2" className="roster_column"><RosterPositionGroup group={"Suspended"}
                                                                            data={this.props.data}
                                                                            team={this.props.team}
